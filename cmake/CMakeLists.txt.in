@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.5)
+project(dependencies-download NONE)
+
+list(APPEND CMAKE_MODULE_PATH ${MODULES_PATH})
+include(common)
+
+include(ExternalProject)
+
+ExternalProject_Add(CMDA_spdlog_project
+    URL               "${THIRD_PARTY_DIRECTORY}/spdlog-${SPDLOG_VERSION}.zip"
+    URL_HASH          ${SPDLOG_SHA256}
+    SOURCE_DIR        "${THIRD_PARTY_BUILD_DIRECTORY}/spdlog/source"
+    BINARY_DIR        "${THIRD_PARTY_BUILD_DIRECTORY}/spdlog/build"
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND     ""
+    UPDATE_COMMAND    ""
+    INSTALL_COMMAND   ""
+)
+
+ExternalProject_Add(CMDA_LIEF_project
+    URL               "${THIRD_PARTY_DIRECTORY}/LIEF-${LIEF_VERSION}.tar.gz"
+    URL_HASH          ${LIEF_SHA256}
+    SOURCE_DIR        "${THIRD_PARTY_BUILD_DIRECTORY}/LIEF/source"
+    BINARY_DIR        ""
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND     ""
+    UPDATE_COMMAND    ""
+    INSTALL_COMMAND   ""
+)
